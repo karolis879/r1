@@ -1,5 +1,4 @@
 import logo from "./logo.png";
-
 import "./App.scss";
 import "./buttons.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
