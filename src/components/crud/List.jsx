@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function List({
   name,
   setDeleteModalData,
@@ -13,7 +11,6 @@ export default function List({
   //cia paspaudus atsiranda
   const edit = (c) => {
     setEditModalData(c);
-    console.log(c);
   };
 
   return (

@@ -140,12 +140,18 @@
 }
 header {
   background-color: #034732;
+  display: flex;
   img {
     width: 50%;
     margin-left: -55px;
     margin-top: 20px;
     margin-bottom: 20px;
   }
+}
+
+.header-button {
+  height: 50px;
+  margin: 0;
 }
 
 .messages {
@@ -155,26 +161,33 @@ header {
   display: flex;
   flex-direction: column;
   gap: 5px;
+
   .message {
-      padding: 15px 30px;
-      border: 1px solid $gray;
-      background-color: lighten($gray, 10%);
-      border-radius: 3px;
-      font-size: 20px;
-      &.ok {
-          border-color: $yellow;
-          background-color: lighten($yellow, 10%);
-          color: white;
-      }
-      &.info {
-          border-color: $blue;
-          background-color: lighten($blue, 10%);
-          color: white;
-      }
-      &.error {
-          border-color: $red;
-          background-color: lighten($red, 10%);
-          color: white;
-      }
+    padding: 15px 30px;
+    border: 1px solid $gray;
+    background-color: lighten($gray, 10%);
+    border-radius: 3px;
+    font-size: 20px;
+
+
+    &.ok {
+      border-color: $yellow;
+      background-color: lighten($yellow, 10%);
+      color: white;
+    }
+
+    &.info {
+      border-color: $blue;
+      background-color: lighten($blue, 10%);
+      color: white;
+    }
+
+    &.error {
+      border-color: $red;
+      background-color: lighten($red, 10%);
+      color: white;
+    }
+
+    
   }
 }

@@ -2,7 +2,7 @@ import logo from "./logo.png";
 import "./App.scss";
 import "./buttons.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import Create from "./components/crud/Create";
 import List from "./components/crud/List";
 import { useState, useEffect } from "react";
@@ -25,10 +25,11 @@ export default function App() {
   const [deleteModalData, setDeleteModalData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
   const [editModalData, setEditModalData] = useState(null);
+  const [createModalData, setCreateModalData] = useState(null);
   const [editData, setEditData] = useState(null);
   const [ammount, setAmmount] = useState(0);
   const [messages, setMessages] = useState([]);
-
+  
 
   //R read
   useEffect(
@@ -46,7 +47,7 @@ export default function App() {
       }
       crudCreate(KEY, createData);
       setListUpdate(Date.now());
-      msg('Nauja saskaita', 'ok');
+      msg("Nauja saskaita", "ok");
     },
     [createData]
   );
@@ -80,24 +81,30 @@ export default function App() {
   const msg = (text, type) => {
     const id = uuidv4();
     const message = {
-        id,
-        text,
-        type
-    }
-    setMessages(m => [...m, message]);
-    setTimeout(_ => setMessages(m => m.filter(m => m.id !== id)), 5000);
-}
-
+      id,
+      text,
+      type,
+    };
+    setMessages((m) => [...m, message]);
+    setTimeout((_) => setMessages((m) => m.filter((m) => m.id !== id)), 5000);
+  };
+  
 
   return (
     <>
       <header>
         <div className="container">
           <div className="row">
-            <div className="col-8">
+            <div className="col-12"
+            style={{display: 'flex', alignItems: 'center'}}>
               <a href="">
                 <img src={logo} alt="as" />
               </a>
+              <button 
+              className="header-button"
+              onClick={() => setCreateModalData(true)}>
+              Pridėti saskaitą
+              </button>
             </div>
           </div>
         </div>
@@ -111,11 +118,7 @@ export default function App() {
               setEditModalData={setEditModalData}
             />
           </div>
-          <div className="col-4">
-            <Create 
-            setCreateData={setCreateData}
-            msg={msg} />
-          </div>
+          <div className="col-4"></div>
         </div>
       </div>
       <Delete
@@ -123,6 +126,12 @@ export default function App() {
         setDeleteModalData={setDeleteModalData}
         setDeleteData={setDeleteData}
         msg={msg}
+      />
+      <Create
+        setCreateData={setCreateData}
+        msg={msg}
+        createModalData={createModalData}
+        setCreateModalData={setCreateModalData}
       />
       <Edit
         editModalData={editModalData}
@@ -132,8 +141,7 @@ export default function App() {
         setAmmount={setAmmount}
         msg={msg}
       />
-      <Messages messages={messages}/>
-</>
+      <Messages messages={messages} />
+    </>
   );
 }
-
